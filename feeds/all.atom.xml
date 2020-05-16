@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hugo Tini</title><link href="https://hugotini.github.io/" rel="alternate"></link><link href="https://hugotini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://hugotini.github.io/</id><updated>2020-05-07T00:00:00+02:00</updated><entry><title>DeepBump</title><link href="https://hugotini.github.io/deepbump.html" rel="alternate"></link><published>2020-05-07T00:00:00+02:00</published><updated>2020-05-07T00:00:00+02:00</updated><author><name>Hugo Tini</name></author><id>tag:hugotini.github.io,2020-05-07:/deepbump.html</id><summary type="html">&lt;p&gt;Normal Map generation using Machine Learning&lt;/p&gt;</summary><content type="html">&lt;p&gt;Normal maps encode surfaces orientation, they're used a lot in computer graphics. They allow "faking" details without having to use extra geometry. Artists typically obtain normal maps in various ways : they might sculpt detailed geometry, then project it on a lower resolution mesh (retopology), they might generate materials procedurally (i.e. using math functions), use photogrammetry, etc.&lt;/p&gt;
+&lt;p&gt;Those techniques require some manual efforts. Sometimes you just want to quickly &lt;a href="https://youtu.be/v_ikG-u_6r0"&gt;grab that photo and use it in your scene&lt;/a&gt;. Then it makes sense to try to generate normal maps from single pictures.&lt;/p&gt;
+&lt;p&gt;A simple approach is to use the grayscale image as height from which you get the normal map (by taking the slope's normal). It can give decent results on some textures, but still is a rough approximation as darker pixels don't always mean there's a hole on the surface.&lt;/p&gt;
+&lt;h1&gt;DeepBump&lt;/h1&gt;
+&lt;p&gt;&lt;a href="https://github.com/HugoTini/DeepBump"&gt;DeepBump&lt;/a&gt; is an experiment using machine learning for reconstructing normals from single pictures. It mainly makes use of an encoder-decoder &lt;a href="https://arxiv.org/abs/1505.04597"&gt;U-Net&lt;/a&gt; with a &lt;a href="https://arxiv.org/abs/1801.04381"&gt;MobileNetV2&lt;/a&gt; architecture. Training data is taken from real-world photogrammetry and procedural materials.&lt;/p&gt;
+&lt;p&gt;This tool is available both as a Blender add-on and as a command-line program. Check &lt;a href="https://github.com/HugoTini/DeepBump"&gt;here&lt;/a&gt; for install instructions. Once installed, you can generate a normal map from a picture (&lt;em&gt;image texture node&lt;/em&gt; in Blender) in one click :&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src='https://hugotini.github.io/assets/deepbump/addon_vid.webm'
+            type="video/webm"&gt;
+&lt;/video&gt;
+
+&lt;h1&gt;Results&lt;/h1&gt;
+&lt;p&gt;Here are a few shots of normal maps obtained using DeepBump (middle) and compared with the simple "grayscale = height" method (right):&lt;/p&gt;
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/deepbump/compare1.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare1.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/t4DhcQddCnA'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/deepbump/compare3.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare3.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/uDdoiaWiKFA'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/deepbump/compare4.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare4.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/4UjcOpLLQSE'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/deepbump/compare2.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare2.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/xnQaH8qF0Rc'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Still comparing the two methods, this time using &lt;a href="https://unsplash.com/photos/dcasj22jmCk"&gt;this photo&lt;/a&gt; as input. We apply the normal maps and add some lights (rendered with Blender's realtime engine Eevee). Second row is without color to better visualize the normal maps :&lt;/p&gt;
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/deepbump/clay_compare.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/clay_compare.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/dcasj22jmCk'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Another example with moving lights, without (left) / with (right) the generated normal map :&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src='https://hugotini.github.io/assets/deepbump/brickdoor.webm'
+            type="video/webm"&gt;
+&lt;/video&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/ng-jV5Etz3c'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In some cases, it might even work decently for some hand-painted textures :&lt;/p&gt;
+&lt;video controls&gt;
+    &lt;source src='https://hugotini.github.io/assets/deepbump/handpainted.webm'
+            type="video/webm"&gt;
+&lt;/video&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://opengameart.org/content/handpainted-stone-wall-textures'&gt;original texture&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Limitations&lt;/h1&gt;
+&lt;p&gt;Despite generalization techniques, machine learning models still depend on their training data. If the input picture is very different from what the neural net was trained on, risks are the output won't be ideal, but in any case, it's just one click so it costs nothing to give it a try.&lt;/p&gt;
+&lt;h1&gt;Thanks&lt;/h1&gt;
+&lt;p&gt;Many thanks to the authors of &lt;a href="https://texturehaven.com/"&gt;texturehaven.com&lt;/a&gt; and &lt;a href="https://cc0textures.com/"&gt;cc0textures.com&lt;/a&gt; and to their patreons for making such high quality assets available to all without restrictions. DeepBump's training dataset is based on those. Thanks to &lt;a href="https://github.com/qubvel/segmentation_models.pytorch"&gt;segmentation_models&lt;/a&gt; for making it easy to experiment with different network architectures in PyTorch.&lt;/p&gt;</content><category term="misc"></category></entry></feed>

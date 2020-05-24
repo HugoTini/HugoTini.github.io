@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Hugo Tini</title><link href="https://hugotini.github.io/" rel="alternate"></link><link href="https://hugotini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://hugotini.github.io/</id><updated>2020-05-07T00:00:00+02:00</updated><entry><title>DeepBump</title><link href="https://hugotini.github.io/deepbump.html" rel="alternate"></link><published>2020-05-07T00:00:00+02:00</published><updated>2020-05-07T00:00:00+02:00</updated><author><name>Hugo Tini</name></author><id>tag:hugotini.github.io,2020-05-07:/deepbump.html</id><summary type="html">&lt;p&gt;Normal Map generation using Machine Learning&lt;/p&gt;</summary><content type="html">&lt;p&gt;Normal maps encode surfaces orientation, they're used a lot in computer graphics. They allow "faking" details without having to use extra geometry. Artists typically obtain normal maps in various ways : they might sculpt detailed geometry, then project it on a lower resolution mesh (retopology), they might generate materials procedurally (i.e. using math functions), use photogrammetry, etc.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Hugo Tini</title><link href="https://hugotini.github.io/" rel="alternate"></link><link href="https://hugotini.github.io/feeds/all.atom.xml" rel="self"></link><id>https://hugotini.github.io/</id><updated>2020-05-25T00:00:00+02:00</updated><entry><title>Normals to height</title><link href="https://hugotini.github.io/normalheight.html" rel="alternate"></link><published>2020-05-25T00:00:00+02:00</published><updated>2020-05-25T00:00:00+02:00</updated><author><name>Hugo Tini</name></author><id>tag:hugotini.github.io,2020-05-25:/normalheight.html</id><summary type="html">&lt;p&gt;Computing depth from gradients&lt;/p&gt;</summary><content type="html">&lt;p&gt;Previously, I wrote about &lt;a href="https://hugotini.github.io/deepbump.html"&gt;DeepBump&lt;/a&gt;, a machine 
+learning experiment to generate normal maps from single pictures. However, 
+when creating 3D (or 2D) content, the actual height ("displacement") 
+of the surface might also be useful. To complement DeepBump, &lt;a href="https://github.com/HugoTini/NormalHeight"&gt;NormalHeight&lt;/a&gt; is small extra Blender add-on that computes the height from normals.&lt;/p&gt;
+&lt;h1&gt;Depth-from-gradient&lt;/h1&gt;
+&lt;p&gt;Going from a gradient (normal map) to the depth (height map) is
+often called "shape-from-gradient" or "depth-from-gradient". This has typically
+been used in computer vision, for instance after having found the normal map
+of an object through &lt;a href="https://en.wikipedia.org/wiki/Photometric_stereo"&gt;photometric stereo&lt;/a&gt;. In our case, DeepBump already takes care of generating the normal map from a single photo. NormalHeight then uses the &lt;a href="https://webdocs.cs.ualberta.ca/~vis/courses/CompVis/readings/photometric/FrankotIntegrpami88.pdf"&gt;Frankot-Chellappa algorithm&lt;/a&gt; (Eq. 22) which uses the Fourier Domain to compute a height based on normals.&lt;/p&gt;
+&lt;h1&gt;Usage&lt;/h1&gt;
+&lt;p&gt;By combining DeepBump with NormalHeight, we can now get a displacement from a single photo :&lt;/p&gt;
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/normalheight/compares.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/normalheight/compares.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;original photos : &lt;a href='https://unsplash.com/photos/wtjrpjZABcQ'&gt;a&lt;/a&gt;, &lt;a href='https://unsplash.com/photos/lXVbqVIImZY'&gt;b&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Displacement can also be used for material mixing by thresholding the generated height (3rd picture) and using it as a mask :&lt;/p&gt;
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/normalheight/mixing.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/normalheight/mixing.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;original textures : &lt;a href='https://opengameart.org/content/2048-digitally-painted-tileable-desert-sand-texture'&gt;a&lt;/a&gt;, &lt;a href='https://opengameart.org/content/handpainted-stone-wall-textures'&gt;b&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;Limitation&lt;/h1&gt;
+&lt;p&gt;DeepBump learned to create locally probable normals, however, as the texture is
+processed tile by tile, on large pictures the normals might lack general structure
+(and thus the height map too).&lt;/p&gt;
+&lt;p&gt;To go further, we could get better results by giving the neural net more context about
+the whole picture rather than processing tiles independently. Moreover, we might get
+better height maps by teaching the neural net to predict directly the depth rather than
+the normals.&lt;/p&gt;</content><category term="misc"></category></entry><entry><title>DeepBump</title><link href="https://hugotini.github.io/deepbump.html" rel="alternate"></link><published>2020-05-07T00:00:00+02:00</published><updated>2020-05-07T00:00:00+02:00</updated><author><name>Hugo Tini</name></author><id>tag:hugotini.github.io,2020-05-07:/deepbump.html</id><summary type="html">&lt;p&gt;Normal Map generation using Machine Learning&lt;/p&gt;</summary><content type="html">&lt;p&gt;Normal maps encode surfaces orientation, they're used a lot in computer graphics. They allow "faking" details without having to use extra geometry. Artists typically obtain normal maps in various ways : they might sculpt detailed geometry, then project it on a lower resolution mesh (retopology), they might generate materials procedurally (i.e. using math functions), use photogrammetry, etc.&lt;/p&gt;
 &lt;p&gt;Those techniques require some manual efforts. Sometimes you just want to quickly &lt;a href="https://youtu.be/v_ikG-u_6r0"&gt;grab that photo and use it in your scene&lt;/a&gt;. Then it makes sense to try to generate normal maps from single pictures.&lt;/p&gt;
 &lt;p&gt;A simple approach is to use the grayscale image as height from which you get the normal map (by taking the slope's normal). It can give decent results on some textures, but still is a rough approximation as darker pixels don't always mean there's a hole on the surface.&lt;/p&gt;
 &lt;h1&gt;DeepBump&lt;/h1&gt;

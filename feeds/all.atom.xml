@@ -27,6 +27,14 @@ of an object through &lt;a href="https://en.wikipedia.org/wiki/Photometric_stere
 
 &lt;p class='img_caption'&gt;original textures : &lt;a href='https://opengameart.org/content/2048-digitally-painted-tileable-desert-sand-texture'&gt;a&lt;/a&gt;, &lt;a href='https://opengameart.org/content/handpainted-stone-wall-textures'&gt;b&lt;/a&gt;&lt;/p&gt;
 
+&lt;p class='img_container'&gt;
+    &lt;a href='https://hugotini.github.io/assets/normalheight/mixing2.jpg'&gt;
+        &lt;img class='article_img' src='https://hugotini.github.io/assets/normalheight/mixing2.jpg'&gt;
+    &lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/KCq781yFwWM'&gt;original photo&lt;/a&gt;&lt;/p&gt;
+
 &lt;h1&gt;Limitation&lt;/h1&gt;
 &lt;p&gt;DeepBump learned to create locally probable normals, however, as the texture is
 processed tile by tile, on large pictures the normals might lack general structure

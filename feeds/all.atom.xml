@@ -74,14 +74,6 @@ the normals.&lt;/p&gt;</content><category term="misc"></category></entry><entry>
 &lt;h1&gt;Results&lt;/h1&gt;
 &lt;p&gt;Here are a few shots of normal maps obtained using DeepBump (middle) and compared with the simple "grayscale = height" method (right):&lt;/p&gt;
 &lt;p class='img_container'&gt;
-    &lt;a href='https://hugotini.github.io/assets/deepbump/compare1.jpg'&gt;
-        &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare1.jpg'&gt;
-    &lt;/a&gt;
-&lt;/p&gt;
-
-&lt;p class='img_caption'&gt;&lt;a href='https://unsplash.com/photos/t4DhcQddCnA'&gt;original photo&lt;/a&gt;&lt;/p&gt;
-
-&lt;p class='img_container'&gt;
     &lt;a href='https://hugotini.github.io/assets/deepbump/compare3.jpg'&gt;
         &lt;img class='article_img' src='https://hugotini.github.io/assets/deepbump/compare3.jpg'&gt;
     &lt;/a&gt;
